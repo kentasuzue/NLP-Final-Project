@@ -1,0 +1,104 @@
+get statistics on trained models against breakingNLI
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./process_dataset_A2/trained_SNLI_model_epochs_3/ --output_dir  ./process_dataset_A2/eval_trained_SNLI_model_epochs_3_check/
+
+{"eval_loss": 0.2677115797996521, "eval_model_preparation_time": 0.003, "eval_accuracy": 0.9122421741485596, "eval_runtime": 14.9301, "eval_samples_per_second": 548.758, "eval_steps_per_second": 68.653}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./process_dataset_A2/trained_SNLI_model_epochs_3/ --output_dir ./process_dataset_A2/trained_model_epochs_3_breaking_stats  --num_train_epochs 0.0
+
+Counter({'antonyms': 333, 'antonyms_wordnet': 114, 'rooms': 65, 'drinks': 45, 'vegetables': 29, 'ordinals': 26, 'planets': 20, 'nationalities': 20, 'colors': 18, 'cardinals': 16, 'synonyms': 13, 'countries': 9, 'materials': 7, 'instruments': 4})
+
+{"antonyms": 1147, "synonyms": 894, "cardinals": 759, "nationalities": 755, "drinks": 731, "antonyms_wordnet": 706, "colors": 699, "ordinals": 663, "countries": 613, "rooms": 595, "materials": 397, "vegetables": 109, "instruments": 65, "planets": 60} 8193
+{"antonyms": 333, "instruments": 4, "vegetables": 29, "antonyms_wordnet": 114, "rooms": 65, "synonyms": 13, "drinks": 45, "planets": 20, "nationalities": 20, "countries": 9, "colors": 18, "ordinals": 26, "materials": 7, "cardinals": 16} 719
+{"antonyms": 0.2903225806451613, "instruments": 0.06153846153846154, "vegetables": 0.26605504587155965, "antonyms_wordnet": 0.16147308781869688, "rooms": 0.1092436974789916, "synonyms": 0.0145413870246085, "drinks": 0.06155950752393981, "planets": 0.3333333333333333, "nationalities": 0.026490066225165563, "countries": 0.01468189233278956, "colors": 0.02575107296137339, "ordinals": 0.0392156862745098, "materials": 0.017632241813602016, "cardinals": 0.021080368906455864}
+{"entailment": 982, "neutral": 47, "contradiction": 7164} 8193
+{"contradiction": 661, "entailment": 26, "neutral": 32} 719
+{"contradiction": 0.09226689000558347, "entailment": 0.026476578411405296, "neutral": 0.6808510638297872}
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./process_dataset_A2/trained_model_epochs_3_wrongex_epoch_1_lr_27e-7/ --output_dir ./process_dataset_A2/trained_model_epochs_3_wrongex_epoch_1_lr_27e-7_breaking_stats  --num_train_epochs 0.0
+
+{"antonyms": 1147, "synonyms": 894, "cardinals": 759, "nationalities": 755, "drinks": 731, "antonyms_wordnet": 706, "colors": 699, "ordinals": 663, "countries": 613, "rooms": 595, "materials": 397, "vegetables": 109, "instruments": 65, "planets": 60}
+{"antonyms": 322, "instruments": 4, "vegetables": 22, "antonyms_wordnet": 116, "rooms": 69, "synonyms": 12, "drinks": 39, "planets": 13, "nationalities": 12, "cardinals": 22, "countries": 5, "colors": 15, "ordinals": 23, "materials": 7} 681
+{"antonyms": 0.2807323452484743, "instruments": 0.06153846153846154, "vegetables": 0.2018348623853211, "antonyms_wordnet": 0.1643059490084986, "rooms": 0.11596638655462185, "synonyms": 0.013422818791946308, "drinks": 0.0533515731874145, "planets": 0.21666666666666667, "nationalities": 0.015894039735099338, "cardinals": 0.028985507246376812, "countries": 0.008156606851549755, "colors": 0.02145922746781116, "ordinals": 0.03469079939668175, "materials": 0.017632241813602016}
+{"entailment": 982, "neutral": 47, "contradiction": 7164}
+{"contradiction": 618, "entailment": 29, "neutral": 34} 681
+{"contradiction": 0.08626465661641541, "entailment": 0.029531568228105907, "neutral": 0.723404255319149}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./process_dataset_B2/trained_model_epochs_3/ --output_dir ./process_dataset_B2/trained_model_epochs_3_breaking_stats  --num_train_epochs 0.0
+
+{"antonyms": 1147, "synonyms": 894, "cardinals": 759, "nationalities": 755, "drinks": 731, "antonyms_wordnet": 706, "colors": 699, "ordinals": 663, "countries": 613, "rooms": 595, "materials": 397, "vegetables": 109, "instruments": 65, "planets": 60}
+{"instruments": 6, "colors": 54, "drinks": 139, "vegetables": 53, "rooms": 59, "antonyms": 92, "antonyms_wordnet": 142, "materials": 15, "ordinals": 14, "cardinals": 28, "planets": 10, "countries": 6, "nationalities": 9} 627
+{"instruments": 0.09230769230769231, "colors": 0.07725321888412018, "drinks": 0.19015047879616964, "vegetables": 0.48623853211009177, "rooms": 0.09915966386554621, "antonyms": 0.08020924149956409, "antonyms_wordnet": 0.20113314447592068, "materials": 0.037783375314861464, "ordinals": 0.021116138763197588, "cardinals": 0.03689064558629776, "planets": 0.16666666666666666, "countries": 0.009787928221859706, "nationalities": 0.011920529801324504}
+{"entailment": 982, "neutral": 47, "contradiction": 7164}
+{"contradiction": 570, "entailment": 18, "neutral": 39} 627
+{"contradiction": 0.07956448911222781, "entailment": 0.018329938900203666, "neutral": 0.8297872340425532}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./process_dataset_B2/trained_model_epochs_3_wrongex_epoch_1_lr_24e-7/ --output_dir ./process_dataset_B2/trained_model_epochs_3_wrongex_epoch_1_lr_24e-7_breaking_stats  --num_train_epochs 0.0
+
+{"antonyms": 1147, "synonyms": 894, "cardinals": 759, "nationalities": 755, "drinks": 731, "antonyms_wordnet": 706, "colors": 699, "ordinals": 663, "countries": 613, "rooms": 595, "materials": 397, "vegetables": 109, "instruments": 65, "planets": 60}
+{"colors": 48, "antonyms": 90, "vegetables": 54, "drinks": 98, "instruments": 4, "antonyms_wordnet": 139, "rooms": 47, "ordinals": 19, "cardinals": 29, "planets": 7, "materials": 11, "countries": 6, "nationalities": 6} 558
+{"colors": 0.06866952789699571, "antonyms": 0.07846556233653008, "vegetables": 0.4954128440366973, "drinks": 0.13406292749658003, "instruments": 0.06153846153846154, "antonyms_wordnet": 0.19688385269121814, "rooms": 0.07899159663865546, "ordinals": 0.02865761689291101, "cardinals": 0.03820816864295125, "planets": 0.11666666666666667, "materials": 0.027707808564231738, "countries": 0.009787928221859706, "nationalities": 0.007947019867549669}
+{"entailment": 982, "neutral": 47, "contradiction": 7164}
+{"contradiction": 501, "entailment": 17, "neutral": 40} 558
+{"contradiction": 0.06993299832495813, "entailment": 0.017311608961303463, "neutral": 0.851063829787234}
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./process_dataset_C2/trained_SNLI_model_epochs_3_MNLI_epochs_3/ --output_dir ./process_dataset_C2/trained_SNLI_model_epochs_3_MNLI_epochs_3_breaking_stats  --num_train_epochs 0.0
+
+{"antonyms": 1147, "synonyms": 894, "cardinals": 759, "nationalities": 755, "drinks": 731, "antonyms_wordnet": 706, "colors": 699, "ordinals": 663, "countries": 613, "rooms": 595, "materials": 397, "vegetables": 109, "instruments": 65, "planets": 60}
+{"instruments": 6, "vegetables": 47, "drinks": 78, "antonyms_wordnet": 111, "antonyms": 57, "rooms": 49, "colors": 29, "planets": 14, "countries": 4, "ordinals": 12, "materials": 3, "nationalities": 9, "cardinals": 12} 431
+{"instruments": 0.09230769230769231, "vegetables": 0.43119266055045874, "drinks": 0.106703146374829, "antonyms_wordnet": 0.15722379603399433, "antonyms": 0.04969485614646905, "rooms": 0.08235294117647059, "colors": 0.04148783977110158, "planets": 0.23333333333333334, "countries": 0.0065252854812398045, "ordinals": 0.01809954751131222, "materials": 0.007556675062972292, "nationalities": 0.011920529801324504, "cardinals": 0.015810276679841896}
+{"entailment": 982, "neutral": 47, "contradiction": 7164}
+{"contradiction": 376, "entailment": 13, "neutral": 42} 431
+{"contradiction": 0.05248464544946957, "entailment": 0.013238289205702648, "neutral": 0.8936170212765957}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./process_dataset_C2/trained_model_epochs_3_wrongex_epoch_1_lr_26e-7/ --output_dir ./process_dataset_C2/trained_model_epochs_3_wrongex_epoch_1_lr_26e-7_breaking_stats  --num_train_epochs 0.0
+
+{"antonyms": 1147, "synonyms": 894, "cardinals": 759, "nationalities": 755, "drinks": 731, "antonyms_wordnet": 706, "colors": 699, "ordinals": 663, "countries": 613, "rooms": 595, "materials": 397, "vegetables": 109, "instruments": 65, "planets": 60}
+{"instruments": 5, "vegetables": 46, "drinks": 54, "antonyms_wordnet": 117, "antonyms": 61, "rooms": 44, "planets": 9, "colors": 26, "countries": 3, "ordinals": 18, "materials": 2, "nationalities": 8, "cardinals": 12} 405
+{"instruments": 0.07692307692307693, "vegetables": 0.42201834862385323, "drinks": 0.07387140902872777, "antonyms_wordnet": 0.16572237960339944, "antonyms": 0.05318221447253706, "rooms": 0.07394957983193277, "planets": 0.15, "colors": 0.03719599427753934, "countries": 0.004893964110929853, "ordinals": 0.027149321266968326, "materials": 0.005037783375314861, "nationalities": 0.010596026490066225, "cardinals": 0.015810276679841896}
+{"entailment": 982, "neutral": 47, "contradiction": 7164}
+{"contradiction": 355, "entailment": 11, "neutral": 39} 405
+{"contradiction": 0.04955332216638749, "entailment": 0.01120162932790224, "neutral": 0.8297872340425532}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./process_dataset_D2/trained_MNLI_model_epochs_3_SNLI_epochs_3/ --output_dir ./process_dataset_D2/trained_MNLI_model_epochs_3_SNLI_epochs_3_breaking_stats  --num_train_epochs 0.0
+
+{"antonyms": 1147, "synonyms": 894, "cardinals": 759, "nationalities": 755, "drinks": 731, "antonyms_wordnet": 706, "colors": 699, "ordinals": 663, "countries": 613, "rooms": 595, "materials": 397, "vegetables": 109, "instruments": 65, "planets": 60}
+{"instruments": 3, "vegetables": 25, "antonyms_wordnet": 104, "drinks": 32, "antonyms": 59, "rooms": 65, "synonyms": 5, "ordinals": 23, "nationalities": 17, "countries": 15, "planets": 9, "colors": 12, "materials": 1, "cardinals": 13} = 383
+{"instruments": 0.046153846153846156, "vegetables": 0.22935779816513763, "antonyms_wordnet": 0.14730878186968838, "drinks": 0.04377564979480164, "antonyms": 0.05143853530950305, "rooms": 0.1092436974789916, "synonyms": 0.005592841163310962, "ordinals": 0.03469079939668175, "nationalities": 0.022516556291390728, "countries": 0.024469820554649267, "planets": 0.15, "colors": 0.017167381974248927, "materials": 0.0025188916876574307, "cardinals": 0.017127799736495388}
+{"entailment": 982, "neutral": 47, "contradiction": 7164}
+{"contradiction": 331, "entailment": 15, "neutral": 37} 383
+{"contradiction": 0.04620323841429369, "entailment": 0.015274949083503055, "neutral": 0.7872340425531915}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./process_dataset_D2/trained_MNLI_model_epochs_3_SNLI_epochs_1_lr_2e-7/ --output_dir ./process_dataset_D2/trained_MNLI_model_epochs_3_SNLI_epochs_1_lr_2e-7_breaking_stats  --num_train_epochs 0.0
+
+{"antonyms": 1147, "synonyms": 894, "cardinals": 759, "nationalities": 755, "drinks": 731, "antonyms_wordnet": 706, "colors": 699, "ordinals": 663, "countries": 613, "rooms": 595, "materials": 397, "vegetables": 109, "instruments": 65, "planets": 60}
+{"instruments": 3, "vegetables": 21, "antonyms_wordnet": 106, "drinks": 29, "antonyms": 59, "rooms": 72, "synonyms": 7, "ordinals": 21, "nationalities": 14, "countries": 11, "planets": 9, "colors": 12, "materials": 1, "cardinals": 13} 378
+{"instruments": 0.046153846153846156, "vegetables": 0.1926605504587156, "antonyms_wordnet": 0.1501416430594901, "drinks": 0.03967168262653899, "antonyms": 0.05143853530950305, "rooms": 0.12100840336134454, "synonyms": 0.007829977628635347, "ordinals": 0.03167420814479638, "nationalities": 0.018543046357615896, "countries": 0.01794453507340946, "planets": 0.15, "colors": 0.017167381974248927, "materials": 0.0025188916876574307, "cardinals": 0.017127799736495388}
+{"entailment": 982, "neutral": 47, "contradiction": 7164}
+{"contradiction": 326, "entailment": 16, "neutral": 36} 378
+{"contradiction": 0.04550530429927415, "entailment": 0.016293279022403257, "neutral": 0.7659574468085106}
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_test_formatted.jsonl --model ./process_dataset_A2/trained_SNLI_model_epochs_3/ --output_dir  ./eval_SNLI_trained_model_epochs_3_test_dataset/
+
+{"eval_loss": 0.3500114679336548, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.8822271823883057, "eval_runtime": 17.7176, "eval_samples_per_second": 554.477, "eval_steps_per_second": 69.31}
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_dev_formatted.jsonl --model ./process_dataset_A2/trained_SNLI_model_epochs_3/ --output_dir  ./eval_SNLI_trained_model_epochs_3_dev_dataset/
+
+
+{"eval_loss": 0.3362545073032379, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.8855923414230347, "eval_runtime": 18.1951, "eval_samples_per_second": 540.915, "eval_steps_per_second": 67.656}
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted.jsonl --model ./process_dataset_A2/trained_SNLI_model_epochs_3/ --output_dir  ./eval_SNLI_trained_model_epochs_3_train_dataset/
+
+{"eval_loss": 0.3403591513633728, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.8827959895133972, "eval_runtime": 998.7376, "eval_samples_per_second": 550.061, "eval_steps_per_second": 68.758}
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./multinli_1.0_dev_matched_formatted.jsonl --model ./process_dataset_B2/trained_model_epochs_3/ --output_dir  ./eval_MNLI_trained_model_epochs_3_dev_matched_dataset/
+
+{"eval_loss": 0.5407726764678955, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.8053998947143555, "eval_runtime": 17.5215, "eval_samples_per_second": 560.17, "eval_steps_per_second": 70.028}
+
+

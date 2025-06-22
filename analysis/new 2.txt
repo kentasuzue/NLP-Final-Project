@@ -1,0 +1,29 @@
+if prediction['entailment'] >= 
+45.0:	0.837
+50.0:	0.842
+55.0:	0.842
+
+50.0, lower: 0.810
+50.0, title: 0.833
+50.0, no title: 0.824
+
+50.0, no title: 0.8416
+50.0, no title, lower: 0.8099
+50.0, no title, no tag removal 0.837
+
+50.0, no title, tag removal from fact: 0.8416
+50.0, no title, tag removal from fact, truncation false: 0.8416
+
+60.0, no title, tag removal from fact, truncation false: 0.8416
+
+70.0, no title, tag removal from fact, truncation false: 0.8371
+
+40.0, no title, tag removal from fact, truncation false: 0.8326
+
+
+
+
+
+
+
+

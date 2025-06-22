@@ -1,0 +1,100 @@
+
+Manheim
+
+Accuracy: 96 / 100 = 0.960000
+Training accuracy (100 exs):
+Accuracy: 1957 / 2000 = 0.978500
+Dev accuracy (whole set):
+Decoding on a large number of examples (1000); not printing or plotting
+Accuracy: 19545 / 20000 = 0.977250
+
+CooperUrich
+worse
+
+epochs 4
+dropout perplexity
+0.1 10.95
+0.05 10.70
+0.2 11.58
+0.15 11.30
+0.075 10.89
+0.025 10.66
+0.01 10.81
+0.02 10.58
+
+nhead perplexity
+nhead 2
+nhead 5 10.24
+nhead 4 10.63
+nhead 1 10.80
+nhead 2 
+
+
+num_layers 2 10.48
+num_layers 4 10.67
+
+num_positions 20
+num_positions 10 8.60
+num_positions 4 6.48
+num_positions 8 7.81
+
+num_layers 2
+num_layers 1 10.54
+num_layers 2 7.95
+
+learning rate 1e-4
+learning rate 1e-3 21.19
+learning rate 1e-5 11.73
+learning rate 5e-4 11.98
+learning rate 2e-4 7.49
+learning rate 3e-4 8.73
+learning rate 1.5e-4 7.24
+learning rate 1.2e-4 7.70
+learning rate 1.4e-4 7.50
+learning rate 1.6e-4 7.10
+learning rate 1.7e-4 7.38
+
+num_positions 8 
+num_positions 20 9.71
+
+dim_feedforward 2048
+dim_feedforward 512 10.46
+dim_feedforward 128 10.60
+dim_feedforward 8192 11.79
+dim_feedforward 1024 9.52
+
+d_model 100
+d_model 64 10.97
+d_model 200 11.24
+d_model 80 10.74
+d_model 128 10.91
+d_model 100 10.19
+d_model 150 10.37
+
+num_positions 20
+num_positions 10 8.03
+num_positions 8 7.70
+num_positions 4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
