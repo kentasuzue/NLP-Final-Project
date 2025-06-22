@@ -1,0 +1,154 @@
+
+copy trained_model_epochs_3/ from process dataset B
+
+rename chaosNLI_mnli_modified.jsonl chaosNLI_mnli_modified_0.jsonl
+
+jsonconverter5.py
+chaosNLI_v1.0\\chaosNLI_mnli_m.jsonl into chaosNLI_mnli_modified.jsonl
+
+
+chaosNLI_nli_modified.jsonl stores only examples with probabilities < 0.61
+file size 42,743 kb
+
+down from 101,984 kb
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_001/ --num_train_epochs 0.01
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_001/ --num_train_epochs 0.01
+>>
+Generating train split: 64800 examples [00:00, 570573.34 examples/s]
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+Map (num_proc=2): 100%|████████████████████████████████████████████████████████████████████████████████████████| 64800/64800 [00:10<00:00, 5976.44 examples/s]
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'train_runtime': 3.0142, 'train_samples_per_second': 214.985, 'train_steps_per_second': 6.967, 'train_loss': 1.2894921075730097, 'epoch': 0.01}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 21/21 [00:03<00:00,  6.97it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+>>
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_chaosnli_epochs_001/ --output_dir  ./eval_trained_model_epochs_3_chaosnli_epochs_001/
+
+{"eval_loss": 0.4244020879268646, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.8574392795562744, "eval_runtime": 14.0194, "eval_samples_per_second": 584.403, "eval_steps_per_second": 73.113}
+
+# still a decline from 0.917
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_002/ --num_train_epochs 0.02
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_002/ --num_train_epochs 0.02
+>>
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'train_runtime': 5.3036, 'train_samples_per_second': 244.363, 'train_steps_per_second': 7.731, 'train_loss': 1.160710590641673, 'epoch': 0.02}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 41/41 [00:05<00:00,  7.73it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+>>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_chaosnli_epochs_002/ --output_dir  ./eval_trained_model_epochs_3_chaosnli_epochs_002/
+
+{"eval_loss": 0.5861179828643799, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.8230196237564087, "eval_runtime": 14.1608, "eval_samples_per_second": 578.57, "eval_steps_per_second": 72.383}
+
+# bigger decline from 0.917
+
+
+rename chaosNLI_mnli_modified.jsonl chaosNLI_mnli_modified_1.jsonl
+
+jsonconverter5.py
+chaosNLI_v1.0\\chaosNLI_mnli_m.jsonl into chaosNLI_mnli_modified.jsonl
+
+
+chaosNLI_nli_modified.jsonl stores only examples with probabilities < 0.51
+file size 16,586 kb
+
+down from 101,984 kb
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_001_/ --num_train_epochs 0.01
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_001_/ --num_train_epochs 0.01
+>>
+Generating train split: 24200 examples [00:00, 549852.15 examples/s]
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+Map (num_proc=2): 100%|████████████████████████████████████████████████████████████████████████████████████████| 24200/24200 [00:07<00:00, 3030.74 examples/s]
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'train_runtime': 1.4545, 'train_samples_per_second': 166.38, 'train_steps_per_second': 5.5, 'train_loss': 1.581996202468872, 'epoch': 0.01}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:01<00:00,  5.50it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+>>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_chaosnli_epochs_001_/ --output_dir  ./eval_trained_model_epochs_3_chaosnli_epochs_001_/
+
+{"eval_loss": 0.2629234492778778, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.9093128442764282, "eval_runtime": 14.124, "eval_samples_per_second": 580.077, "eval_steps_per_second": 72.572}
+
+# small decline from 0.917
+
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_002_/ --num_train_epochs 0.02
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_002_/ --num_train_epochs 0.02
+>>
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'train_runtime': 2.3932, 'train_samples_per_second': 202.239, 'train_steps_per_second': 6.686, 'train_loss': 1.3850401639938354, 'epoch': 0.02}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 16/16 [00:02<00:00,  6.69it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_chaosnli_epochs_002_/ --output_dir  ./eval_trained_model_epochs_3_chaosnli_epochs_002_/
+
+{"eval_loss": 0.2862943708896637, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.9145612120628357, "eval_runtime": 14.3005, "eval_samples_per_second": 572.916, "eval_steps_per_second": 71.676}
+
+# small decline from 0.917
+
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_1_lr_1e-5/ --learning_rate 1e-5 --num_train_epochs 1.0  
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_1_lr_1e-5/ --learning_rate 1e-5 --num_train_epochs 1.0
+>>
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 1.0857, 'grad_norm': 2.9731054306030273, 'learning_rate': 3.394980184940555e-06, 'epoch': 0.66}
+{'train_runtime': 89.8743, 'train_samples_per_second': 269.265, 'train_steps_per_second': 8.423, 'train_loss': 1.0643757224240422, 'epoch': 1.0}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 757/757 [01:29<00:00,  8.42it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_chaosnli_epochs_1_lr_1e-5/ --output_dir ./eval_trained_model_epochs_3_chaosnli_epochs_1_lr_1e-5/
+
+{"eval_loss": 0.4987255930900574, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.8913706541061401, "eval_runtime": 14.5818, "eval_samples_per_second": 561.866, "eval_steps_per_second": 70.293}
+
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_3_lr_1e-6/ --learning_rate 1e-6 --num_train_epochs 3.0  
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_mnli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_3_lr_1e-6/ --learning_rate 1e-6 --num_train_epochs 3.0
+>>
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 1.4265, 'grad_norm': 6.390516757965088, 'learning_rate': 7.798326728313518e-07, 'epoch': 0.66}
+{'loss': 1.1356, 'grad_norm': 5.011399745941162, 'learning_rate': 5.596653456627036e-07, 'epoch': 1.32}
+{'loss': 1.0795, 'grad_norm': 4.623147010803223, 'learning_rate': 3.3949801849405547e-07, 'epoch': 1.98}
+{'loss': 1.0619, 'grad_norm': 3.599111318588257, 'learning_rate': 1.193306913254073e-07, 'epoch': 2.64}
+{'train_runtime': 270.2174, 'train_samples_per_second': 268.673, 'train_steps_per_second': 8.404, 'train_loss': 1.1619548386070289, 'epoch': 3.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2271/2271 [04:30<00:00,  8.40it/s]
+P
+
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_chaosnli_epochs_3_lr_1e-6/ --output_dir ./eval_trained_model_epochs_3_chaosnli_epochs_3_lr_1e-6/
+
+{"eval_loss": 0.4533896744251251, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.8906383514404297, "eval_runtime": 14.4716, "eval_samples_per_second": 566.142, "eval_steps_per_second": 70.828}
+

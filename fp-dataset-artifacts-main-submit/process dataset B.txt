@@ -1,0 +1,206 @@
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset multi_nli --output_dir ./trained_model_epochs_3/
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset multi_nli --output_dir ./trained_model_epochs_3/
+>>
+dataset_id A: ('multi_nli',)
+Some weights of ElectraForSequenceClassification were not initialized from the model checkpoint at google/electra-small-discriminator and are newly initialized: ['classifier.dense.bias', 'classifier.dense.weight', 'classifier.out_proj.bias', 'classifier.out_proj.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+Map (num_proc=2): 100%|█████████████████████████████████████████████████████████████████████████████████████| 392702/392702 [00:33<00:00, 11561.66 examples/s]
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:174: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 0.9121, 'grad_norm': 5.69351053237915, 'learning_rate': 4.932094741416776e-05, 'epoch': 0.04}
+{'loss': 0.7388, 'grad_norm': 5.760397911071777, 'learning_rate': 4.864189482833551e-05, 'epoch': 0.08}
+{'loss': 0.6906, 'grad_norm': 6.404658317565918, 'learning_rate': 4.7962842242503265e-05, 'epoch': 0.12}
+{'loss': 0.6635, 'grad_norm': 8.54780387878418, 'learning_rate': 4.728378965667101e-05, 'epoch': 0.16}
+{'loss': 0.6466, 'grad_norm': 6.827364921569824, 'learning_rate': 4.660473707083877e-05, 'epoch': 0.2}
+{'loss': 0.6223, 'grad_norm': 4.838901519775391, 'learning_rate': 4.592568448500652e-05, 'epoch': 0.24}
+{'loss': 0.6228, 'grad_norm': 6.781030654907227, 'learning_rate': 4.5246631899174276e-05, 'epoch': 0.29}
+{'loss': 0.5936, 'grad_norm': 10.363809585571289, 'learning_rate': 4.456757931334203e-05, 'epoch': 0.33}
+{'loss': 0.5998, 'grad_norm': 6.272910118103027, 'learning_rate': 4.3888526727509784e-05, 'epoch': 0.37}
+{'loss': 0.5848, 'grad_norm': 6.662140369415283, 'learning_rate': 4.320947414167754e-05, 'epoch': 0.41}
+{'loss': 0.5799, 'grad_norm': 5.195740699768066, 'learning_rate': 4.2530421555845286e-05, 'epoch': 0.45}
+{'loss': 0.5775, 'grad_norm': 6.113306045532227, 'learning_rate': 4.185136897001304e-05, 'epoch': 0.49}
+{'loss': 0.5793, 'grad_norm': 7.134376049041748, 'learning_rate': 4.1172316384180795e-05, 'epoch': 0.53}
+{'loss': 0.5589, 'grad_norm': 4.44735860824585, 'learning_rate': 4.049326379834855e-05, 'epoch': 0.57}
+{'loss': 0.5605, 'grad_norm': 6.738976001739502, 'learning_rate': 3.98142112125163e-05, 'epoch': 0.61}
+{'loss': 0.5617, 'grad_norm': 4.425509929656982, 'learning_rate': 3.913515862668405e-05, 'epoch': 0.65}
+{'loss': 0.5513, 'grad_norm': 7.68294620513916, 'learning_rate': 3.8456106040851805e-05, 'epoch': 0.69}
+{'loss': 0.5513, 'grad_norm': 5.008939743041992, 'learning_rate': 3.777705345501956e-05, 'epoch': 0.73}
+{'loss': 0.5412, 'grad_norm': 8.262530326843262, 'learning_rate': 3.7098000869187314e-05, 'epoch': 0.77}
+{'loss': 0.5409, 'grad_norm': 5.808445453643799, 'learning_rate': 3.641894828335506e-05, 'epoch': 0.81}
+{'loss': 0.542, 'grad_norm': 7.783461570739746, 'learning_rate': 3.5739895697522816e-05, 'epoch': 0.86}
+{'loss': 0.5385, 'grad_norm': 6.951178550720215, 'learning_rate': 3.506084311169057e-05, 'epoch': 0.9}
+{'loss': 0.532, 'grad_norm': 6.296726703643799, 'learning_rate': 3.4381790525858324e-05, 'epoch': 0.94}
+{'loss': 0.5286, 'grad_norm': 8.533102989196777, 'learning_rate': 3.370273794002607e-05, 'epoch': 0.98}
+{'loss': 0.5024, 'grad_norm': 5.401873588562012, 'learning_rate': 3.3023685354193826e-05, 'epoch': 1.02}
+{'loss': 0.459, 'grad_norm': 6.385366439819336, 'learning_rate': 3.234463276836158e-05, 'epoch': 1.06}
+{'loss': 0.4724, 'grad_norm': 7.70701789855957, 'learning_rate': 3.1665580182529335e-05, 'epoch': 1.1}
+{'loss': 0.4704, 'grad_norm': 7.98406982421875, 'learning_rate': 3.098652759669709e-05, 'epoch': 1.14}
+{'loss': 0.4741, 'grad_norm': 6.61032772064209, 'learning_rate': 3.0307475010864843e-05, 'epoch': 1.18}
+{'loss': 0.4629, 'grad_norm': 4.307479381561279, 'learning_rate': 2.9628422425032598e-05, 'epoch': 1.22}
+{'loss': 0.4706, 'grad_norm': 6.858114242553711, 'learning_rate': 2.8949369839200345e-05, 'epoch': 1.26}
+{'loss': 0.4611, 'grad_norm': 6.991456985473633, 'learning_rate': 2.82703172533681e-05, 'epoch': 1.3}
+{'loss': 0.463, 'grad_norm': 6.050407886505127, 'learning_rate': 2.7591264667535854e-05, 'epoch': 1.34}
+{'loss': 0.4742, 'grad_norm': 8.39707088470459, 'learning_rate': 2.6912212081703608e-05, 'epoch': 1.39}
+{'loss': 0.4702, 'grad_norm': 7.0295729637146, 'learning_rate': 2.6233159495871362e-05, 'epoch': 1.43}
+{'loss': 0.4592, 'grad_norm': 4.897870063781738, 'learning_rate': 2.5554106910039117e-05, 'epoch': 1.47}
+{'loss': 0.4612, 'grad_norm': 4.561768531799316, 'learning_rate': 2.4875054324206867e-05, 'epoch': 1.51}
+{'loss': 0.4538, 'grad_norm': 4.427026271820068, 'learning_rate': 2.4196001738374622e-05, 'epoch': 1.55}
+{'loss': 0.4616, 'grad_norm': 6.432247161865234, 'learning_rate': 2.3516949152542376e-05, 'epoch': 1.59}
+{'loss': 0.4539, 'grad_norm': 5.343485355377197, 'learning_rate': 2.2837896566710127e-05, 'epoch': 1.63}
+{'loss': 0.4566, 'grad_norm': 5.821305751800537, 'learning_rate': 2.215884398087788e-05, 'epoch': 1.67}
+{'loss': 0.4537, 'grad_norm': 6.727502346038818, 'learning_rate': 2.1479791395045636e-05, 'epoch': 1.71}
+{'loss': 0.447, 'grad_norm': 8.136746406555176, 'learning_rate': 2.0800738809213386e-05, 'epoch': 1.75}
+{'loss': 0.4509, 'grad_norm': 6.923956871032715, 'learning_rate': 2.012168622338114e-05, 'epoch': 1.79}
+{'loss': 0.457, 'grad_norm': 13.167396545410156, 'learning_rate': 1.944263363754889e-05, 'epoch': 1.83}
+{'loss': 0.4471, 'grad_norm': 8.435593605041504, 'learning_rate': 1.8763581051716646e-05, 'epoch': 1.87}
+{'loss': 0.4559, 'grad_norm': 6.721948146820068, 'learning_rate': 1.8084528465884397e-05, 'epoch': 1.91}
+{'loss': 0.4528, 'grad_norm': 4.7497782707214355, 'learning_rate': 1.740547588005215e-05, 'epoch': 1.96}
+{'loss': 0.4455, 'grad_norm': 4.585971832275391, 'learning_rate': 1.6726423294219905e-05, 'epoch': 2.0}
+{'loss': 0.3901, 'grad_norm': 7.9375128746032715, 'learning_rate': 1.6047370708387656e-05, 'epoch': 2.04}
+{'loss': 0.3803, 'grad_norm': 6.70093297958374, 'learning_rate': 1.536831812255541e-05, 'epoch': 2.08}
+{'loss': 0.3902, 'grad_norm': 6.568000793457031, 'learning_rate': 1.4689265536723165e-05, 'epoch': 2.12}
+{'loss': 0.3859, 'grad_norm': 10.49144458770752, 'learning_rate': 1.4010212950890916e-05, 'epoch': 2.16}
+{'loss': 0.3911, 'grad_norm': 5.836116790771484, 'learning_rate': 1.333116036505867e-05, 'epoch': 2.2}
+{'loss': 0.3836, 'grad_norm': 12.108301162719727, 'learning_rate': 1.2652107779226425e-05, 'epoch': 2.24}
+{'loss': 0.3884, 'grad_norm': 10.793145179748535, 'learning_rate': 1.1973055193394177e-05, 'epoch': 2.28}
+{'loss': 0.3734, 'grad_norm': 6.504454135894775, 'learning_rate': 1.1294002607561931e-05, 'epoch': 2.32}
+{'loss': 0.3816, 'grad_norm': 5.876360893249512, 'learning_rate': 1.0614950021729684e-05, 'epoch': 2.36}
+{'loss': 0.3823, 'grad_norm': 8.312812805175781, 'learning_rate': 9.935897435897435e-06, 'epoch': 2.4}
+{'loss': 0.3849, 'grad_norm': 8.079608917236328, 'learning_rate': 9.25684485006519e-06, 'epoch': 2.44}
+{'loss': 0.3882, 'grad_norm': 8.543954849243164, 'learning_rate': 8.577792264232942e-06, 'epoch': 2.49}
+{'loss': 0.3902, 'grad_norm': 7.803895473480225, 'learning_rate': 7.898739678400696e-06, 'epoch': 2.53}
+{'loss': 0.3927, 'grad_norm': 9.81696605682373, 'learning_rate': 7.219687092568449e-06, 'epoch': 2.57}
+{'loss': 0.3788, 'grad_norm': 6.83778715133667, 'learning_rate': 6.540634506736203e-06, 'epoch': 2.61}
+{'loss': 0.3881, 'grad_norm': 5.791926860809326, 'learning_rate': 5.861581920903955e-06, 'epoch': 2.65}
+{'loss': 0.3842, 'grad_norm': 4.620368957519531, 'learning_rate': 5.182529335071708e-06, 'epoch': 2.69}
+{'loss': 0.3863, 'grad_norm': 7.867519378662109, 'learning_rate': 4.503476749239461e-06, 'epoch': 2.73}
+{'loss': 0.3857, 'grad_norm': 5.937046051025391, 'learning_rate': 3.824424163407214e-06, 'epoch': 2.77}
+{'loss': 0.3882, 'grad_norm': 6.402561187744141, 'learning_rate': 3.1453715775749674e-06, 'epoch': 2.81}
+{'loss': 0.3628, 'grad_norm': 5.176638126373291, 'learning_rate': 2.466318991742721e-06, 'epoch': 2.85}
+{'loss': 0.3763, 'grad_norm': 7.65991735458374, 'learning_rate': 1.7872664059104738e-06, 'epoch': 2.89}
+{'loss': 0.3839, 'grad_norm': 4.601920127868652, 'learning_rate': 1.108213820078227e-06, 'epoch': 2.93}
+{'loss': 0.3707, 'grad_norm': 5.947064399719238, 'learning_rate': 4.2916123424598005e-07, 'epoch': 2.97}
+{'train_runtime': 4391.8292, 'train_samples_per_second': 268.25, 'train_steps_per_second': 8.383, 'train_loss': 0.48087849693679646, 'epoch': 3.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 36816/36816 [1:13:11<00:00,  8.38it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset breaking_nli --model ./trained_model_epochs_3/ --output_dir  ./eval_output_trained_model_epochs_3/
+
+
+0 entailment
+1 neutral
+2 contradiction
+
+
+./breaking_nli_modified.jsonl
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir  ./eval_output_trained_model_epochs_3/
+
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1025/1025 [00:14<00:00, 70.46it/s]
+Evaluation results:
+{'eval_loss': 0.2524194121360779, 'eval_model_preparation_time': 0.002, 'eval_accuracy': 0.917490541934967, 'eval_runtime': 14.7363, 'eval_samples_per_second': 555.973, 'eval_steps_per_second': 69.556}
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+# 0.917 very high, so little room for improvement
+
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_3/
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_3/
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 0.7595, 'grad_norm': 4.540427207946777, 'learning_rate': 4.8238940546632854e-05, 'epoch': 0.11}
+{'loss': 0.673, 'grad_norm': 4.208782196044922, 'learning_rate': 4.647788109326571e-05, 'epoch': 0.21}
+{'loss': 0.6402, 'grad_norm': 3.610020637512207, 'learning_rate': 4.4716821639898564e-05, 'epoch': 0.32}
+{'loss': 0.6257, 'grad_norm': 3.6922130584716797, 'learning_rate': 4.2955762186531416e-05, 'epoch': 0.42}
+{'loss': 0.6283, 'grad_norm': 3.3203649520874023, 'learning_rate': 4.1194702733164275e-05, 'epoch': 0.53}
+{'loss': 0.6116, 'grad_norm': 4.698099613189697, 'learning_rate': 3.9433643279797126e-05, 'epoch': 0.63}
+{'loss': 0.5992, 'grad_norm': 2.519665241241455, 'learning_rate': 3.767258382642998e-05, 'epoch': 0.74}
+{'loss': 0.6103, 'grad_norm': 3.1823930740356445, 'learning_rate': 3.5911524373062836e-05, 'epoch': 0.85}
+{'loss': 0.6057, 'grad_norm': 3.534952402114868, 'learning_rate': 3.415046491969569e-05, 'epoch': 0.95}
+{'loss': 0.5978, 'grad_norm': 3.5856378078460693, 'learning_rate': 3.238940546632854e-05, 'epoch': 1.06}
+{'loss': 0.6008, 'grad_norm': 2.793297290802002, 'learning_rate': 3.06283460129614e-05, 'epoch': 1.16}
+{'loss': 0.601, 'grad_norm': 2.330805778503418, 'learning_rate': 2.8867286559594254e-05, 'epoch': 1.27}
+{'loss': 0.5971, 'grad_norm': 2.6865198612213135, 'learning_rate': 2.7106227106227105e-05, 'epoch': 1.37}
+{'loss': 0.5855, 'grad_norm': 2.032562255859375, 'learning_rate': 2.5345167652859964e-05, 'epoch': 1.48}
+{'loss': 0.5885, 'grad_norm': 2.6050267219543457, 'learning_rate': 2.3584108199492815e-05, 'epoch': 1.58}
+{'loss': 0.5828, 'grad_norm': 3.9414901733398438, 'learning_rate': 2.182304874612567e-05, 'epoch': 1.69}
+{'loss': 0.5867, 'grad_norm': 3.2507872581481934, 'learning_rate': 2.0061989292758522e-05, 'epoch': 1.8}
+{'loss': 0.5838, 'grad_norm': 3.292367935180664, 'learning_rate': 1.8300929839391377e-05, 'epoch': 1.9}
+{'loss': 0.5765, 'grad_norm': 2.7250092029571533, 'learning_rate': 1.6539870386024233e-05, 'epoch': 2.01}
+{'loss': 0.5771, 'grad_norm': 2.518907308578491, 'learning_rate': 1.4778810932657086e-05, 'epoch': 2.11}
+{'loss': 0.5776, 'grad_norm': 2.5490009784698486, 'learning_rate': 1.3017751479289941e-05, 'epoch': 2.22}
+{'loss': 0.5742, 'grad_norm': 3.4083139896392822, 'learning_rate': 1.1256692025922794e-05, 'epoch': 2.32}
+{'loss': 0.5751, 'grad_norm': 2.409024715423584, 'learning_rate': 9.49563257255565e-06, 'epoch': 2.43}
+{'loss': 0.5692, 'grad_norm': 2.4470040798187256, 'learning_rate': 7.734573119188505e-06, 'epoch': 2.54}
+{'loss': 0.5756, 'grad_norm': 3.2533392906188965, 'learning_rate': 5.973513665821358e-06, 'epoch': 2.64}
+{'loss': 0.574, 'grad_norm': 2.4989383220672607, 'learning_rate': 4.212454212454213e-06, 'epoch': 2.75}
+{'loss': 0.5846, 'grad_norm': 2.7419025897979736, 'learning_rate': 2.4513947590870666e-06, 'epoch': 2.85}
+{'loss': 0.5643, 'grad_norm': 2.508451461791992, 'learning_rate': 6.903353057199211e-07, 'epoch': 2.96}
+{'train_runtime': 1689.9994, 'train_samples_per_second': 268.757, 'train_steps_per_second': 8.4, 'train_loss': 0.600710794401021, 'epoch': 3.0}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 14196/14196 [28:09<00:00,  8.40it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_chaosnli_epochs_3/ --output_dir  ./eval_trained_model_epochs_3_chaosnli_epochs_3/
+
+{"eval_loss": 0.8661810755729675, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.6807030439376831, "eval_runtime": 14.5829, "eval_samples_per_second": 561.822, "eval_steps_per_second": 70.288}
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_01/ --num_train_epochs 0.1
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_01/ --num_train_epochs 0.1
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'train_runtime': 55.7875, 'train_samples_per_second': 271.387, 'train_steps_per_second': 8.497, 'train_loss': 0.7669665501590519, 'epoch': 0.1}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 474/474 [00:55<00:00,  8.50it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_chaosnli_epochs_01/ --output_dir  ./eval_trained_model_epochs_3_chaosnli_epochs_01/
+
+{"eval_loss": 0.529382586479187, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.8116685152053833, "eval_runtime": 14.3757, "eval_samples_per_second": 569.921, "eval_steps_per_second": 71.301}
+
+
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_001/ --num_train_epochs 0.01
+
+ C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./chaosNLI_snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_chaosnli_epochs_001/ --num_train_epochs 0.01
+>>
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'train_runtime': 6.1756, 'train_samples_per_second': 245.16, 'train_steps_per_second': 7.773, 'train_loss': 0.8985325495402018, 'epoch': 0.01}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 48/48 [00:06<00:00,  7.77it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+>>
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_chaosnli_epochs_001/ --output_dir  ./eval_trained_model_epochs_3_chaosnli_epochs_001/
+
+{"eval_loss": 0.5825835466384888, "eval_model_preparation_time": 0.001, "eval_accuracy": 0.7779812216758728, "eval_runtime": 14.4591, "eval_samples_per_second": 566.634, "eval_steps_per_second": 70.89}
+
+# still a decline from 0.917
+
+
+
+
+
+
+

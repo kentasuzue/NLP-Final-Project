@@ -1,0 +1,118 @@
+
+
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\.venv\Scripts\python.exe C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\snliconverter.py 
+examples = 550152
+multiple_opinions = 39441
+multiple_opinions_2 = 6437
+label_counter = Counter({1: 510711, 5: 36776, 4: 2628, 3: 37})
+label_counter_total = 550152
+multiple_label_total = 39441
+
+Process finished with exit code 0
+
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\.venv\Scripts\python.exe C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\snliconverter.py 
+examples = 550152
+multiple_opinions = 39441
+multiple_opinions_2 = 6411
+label_counter = Counter({1: 510711, 5: 36776, 4: 2628, 3: 37})
+label_counter_total = 550152
+multiple_label_total = 39441
+
+
+copy trained_model_epochs_3/ from process dataset A
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_snli_epochs_1/ --num_train_epochs 1
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_snli_epochs_1/ --num_train_epochs 1
+>>
+Generating train split: 37328 examples [00:00, 485102.77 examples/s]
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+Map (num_proc=2): 100%|████████████████████████████████████████████████████████████████████████████████████████| 37328/37328 [00:08<00:00, 4428.25 examples/s]
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 0.9668, 'grad_norm': 2.7820730209350586, 'learning_rate': 2.857754927163668e-05, 'epoch': 0.43}
+{'loss': 0.947, 'grad_norm': 4.244745254516602, 'learning_rate': 7.15509854327335e-06, 'epoch': 0.86}
+{'train_runtime': 138.1041, 'train_samples_per_second': 270.289, 'train_steps_per_second': 8.45, 'train_loss': 0.9551107084638764, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1167/1167 [02:18<00:00,  8.45it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_snli_epochs_1/ --output_dir  ./eval_trained_model_epochs_3_snli_epochs_1/
+
+{"eval_loss": 0.5327064394950867, "eval_model_preparation_time": 0.001, "eval_accuracy": 0.9076040387153625, "eval_runtime": 14.4236, "eval_samples_per_second": 568.027, "eval_steps_per_second": 71.064}
+
+# worse than 0.94
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_snli_epochs_01/ --num_train_epochs 0.1
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_snli_epochs_01/ --num_train_epochs 0.1
+>>
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'train_runtime': 14.1366, 'train_samples_per_second': 264.053, 'train_steps_per_second': 8.276, 'train_loss': 0.9998575194269164, 'epoch': 0.1}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 117/117 [00:14<00:00,  8.28it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+>>
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_snli_epochs_01/ --output_dir  ./eval_trained_model_epochs_3_snli_epochs_01/
+
+{"eval_loss": 0.47214215993881226, "eval_model_preparation_time": 0.001, "eval_accuracy": 0.9101672172546387, "eval_runtime": 14.0511, "eval_samples_per_second": 583.088, "eval_steps_per_second": 72.948}
+
+# worse than 0.94
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset multi_nli  --model ./trained_model_epochs_3_snli_epochs_01/ --output_dir ./eval_multi_nli_trained_model_epochs_3_snli_epochs_01/
+
+{"eval_loss": 0.8438012599945068, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.6225165724754333, "eval_runtime": 17.3977, "eval_samples_per_second": 564.155, "eval_steps_per_second": 70.527}
+
+# worse than 0.71
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_snli_epochs_1_lr_1e-6/ --num_train_epochs 1 --learning_rate 1e-6
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_snli_epochs_1_lr_1e-6/ --num_train_epochs 1 --learning_rate 1e-6
+>>
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 1.3177, 'grad_norm': 6.471719264984131, 'learning_rate': 5.715509854327335e-07, 'epoch': 0.43}
+{'loss': 1.1282, 'grad_norm': 6.354825496673584, 'learning_rate': 1.4310197086546698e-07, 'epoch': 0.86}
+{'train_runtime': 137.4846, 'train_samples_per_second': 271.507, 'train_steps_per_second': 8.488, 'train_loss': 1.207062199060592, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1167/1167 [02:17<00:00,  8.49it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset multi_nli  --model ./trained_model_epochs_3_snli_epochs_1_lr_1e-6/ --output_dir ./eval_multi_nli_trained_model_epochs_3_snli_epochs_1_lr_1e-6/
+
+{"eval_loss": 0.7188401222229004, "eval_model_preparation_time": 0.001, "eval_accuracy": 0.695364236831665, "eval_runtime": 16.0818, "eval_samples_per_second": 610.318, "eval_steps_per_second": 76.298}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_snli_epochs_3_lr_1e-6/ --num_train_epochs 3 --learning_rate 1e-6
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir ./trained_model_epochs_3_snli_epochs_3_lr_1e-6/ --num_train_epochs 3 --learning_rate 1e-6
+>>
+dataset_id Z: None
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main\run.py:177: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 1.301, 'grad_norm': 6.0333638191223145, 'learning_rate': 8.571836618109112e-07, 'epoch': 0.43}
+{'loss': 1.0682, 'grad_norm': 4.526636123657227, 'learning_rate': 7.143673236218223e-07, 'epoch': 0.86}
+{'loss': 1.0055, 'grad_norm': 3.6853368282318115, 'learning_rate': 5.715509854327335e-07, 'epoch': 1.29}
+{'loss': 0.9798, 'grad_norm': 3.381582021713257, 'learning_rate': 4.2873464724364466e-07, 'epoch': 1.71}
+{'loss': 0.9644, 'grad_norm': 3.1321873664855957, 'learning_rate': 2.859183090545558e-07, 'epoch': 2.14}
+{'loss': 0.978, 'grad_norm': 3.9268054962158203, 'learning_rate': 1.4310197086546698e-07, 'epoch': 2.57}
+{'loss': 0.9708, 'grad_norm': 3.1168060302734375, 'learning_rate': 2.8563267637817766e-10, 'epoch': 3.0}
+{'train_runtime': 415.7416, 'train_samples_per_second': 269.36, 'train_steps_per_second': 8.421, 'train_loss': 1.0382649888314033, 'epoch': 3.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3501/3501 [06:55<00:00,  8.42it/s]
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifacts-main>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset multi_nli  --model ./trained_model_epochs_3_snli_epochs_3_lr_1e-6/ --output_dir ./eval_multi_nli_trained_model_epochs_3_snli_epochs_3_lr_1e-6/
+
+
+{"eval_loss": 0.8083558082580566, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.6742740869522095, "eval_runtime": 17.1522, "eval_samples_per_second": 572.231, "eval_steps_per_second": 71.536}
+
+# worse than 0.71
+
