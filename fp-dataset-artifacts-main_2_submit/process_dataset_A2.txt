@@ -1,0 +1,764 @@
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset snli --output_dir ./trained_model_epochs_3
+
+ 33%|█████████████████████████████████████▋                                                                           | 17167/51504 [33:53<1:11:45,  7.97it/s]Traceback (most recent call last):
+  File "C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py", line 270, in <module>
+  File "C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py", line 225, in main
+    # If you want to customize the way the loss is computed, you should subclass Trainer and override the "compute_loss"
+    ^^^^^^^^^^^^^^^
+  File "C:\Users\kenta\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\trainer.py", line 2122, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kenta\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\trainer.py", line 2565, in _inner_training_loop
+    self.control = self.callback_handler.on_epoch_end(args, self.state, self.control)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kenta\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\trainer_callback.py", line 478, in on_epoch_end
+    return self.call_event("on_epoch_end", args, state, control)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kenta\AppData\Local\Programs\Python\Python312\Lib\site-packages\transformers\trainer_callback.py", line 518, in call_event
+    result = getattr(callback, event)(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py", line 30, in on_epoch_end
+
+KeyError: 'eval_predictions'
+
+
+
+
+odel: ElectraForSequenceClassification(
+  (electra): ElectraModel(
+    (embeddings): ElectraEmbeddings(
+      (word_embeddings): Embedding(30522, 128, padding_idx=0)
+      (position_embeddings): Embedding(512, 128)
+      (token_type_embeddings): Embedding(2, 128)
+      (LayerNorm): LayerNorm((128,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (embeddings_project): Linear(in_features=128, out_features=256, bias=True)
+    (encoder): ElectraEncoder(
+      (layer): ModuleList(
+        (0-11): 12 x ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=256, out_features=256, bias=True)
+              (key): Linear(in_features=256, out_features=256, bias=True)
+              (value): Linear(in_features=256, out_features=256, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=256, out_features=256, bias=True)
+              (LayerNorm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=256, out_features=1024, bias=True)
+            (intermediate_act_fn): GELUActivation()
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=1024, out_features=256, bias=True)
+            (LayerNorm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+  )
+  (classifier): ElectraClassificationHead(
+    (dense): Linear(in_features=256, out_features=256, bias=True)
+    (activation): GELUActivation()
+    (dropout): Dropout(p=0.1, inplace=False)
+    (out_proj): Linear(in_features=256, out_features=3, bias=True)
+  )
+)
+processing_class: ElectraTokenizerFast(name_or_path='google/electra-small-discriminator', vocab_size=30522, model_max_length=512, is_fast=True, padding_side='right', truncation_side='right', special_tokens={'unk_token': '[UNK]', 'sep_token': '[SEP]', 'pad_token': '[PAD]', 'cls_token': '[CLS]', 'mask_token': '[MASK]'}, clean_up_tokenization_spaces=False),  added_tokens_decoder={
+        0: AddedToken("[PAD]", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+        100: AddedToken("[UNK]", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+        101: AddedToken("[CLS]", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+        102: AddedToken("[SEP]", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+        103: AddedToken("[MASK]", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+}
+optimizer: AcceleratedOptimizer (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    initial_lr: 5e-05
+    lr: 3.3333333333333335e-05
+    maximize: False
+    weight_decay: 0.0
+
+Parameter Group 1
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    initial_lr: 5e-05
+    lr: 3.3333333333333335e-05
+    maximize: False
+    weight_decay: 0.0
+)
+lr_scheduler: <torch.optim.lr_scheduler.LambdaLR object at 0x0000019E9D426690>
+train_dataloader: <accelerate.data_loader.DataLoaderShard object at 0x0000019E9D426E10>
+eval_dataloader: None
+
+
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_modified.jsonl --output_dir ./garbage_train  --num_train_epochs 1.0
+
+
+        for idx in wrong_indices_list:
+
+            example = train_dataset_featurized[idx]
+            minority_examples.append(example)
+
+
+        # Save the wrong predictions to a JSON file after every epoch
+        with open(f"{self.output_dir}/minority_examples, "w")" as f:
+            train_dataset_featurized
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0/snli_1.0_train.jsonl --output_dir ./trained_model_epochs_1  --num_train_epochs 1.0
+
+error
+snli not formatted
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted.jsonl --output_dir ./trained_model_epochs_1  --num_train_epochs 1.0
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted.jsonl --output_dir ./trained_model_epochs_1  --num_train_epochs 1.0
+>>
+Generating train split: 549367 examples [00:00, 697672.13 examples/s]
+Some weights of ElectraForSequenceClassification were not initialized from the model checkpoint at google/electra-small-discriminator and are newly initialized: ['classifier.dense.bias', 'classifier.dense.weight', 'classifier.out_proj.bias', 'classifier.out_proj.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+Map (num_proc=2): 100%|█████████████████████████████████████████████████████████████████████████████████████| 549367/549367 [00:38<00:00, 14261.40 examples/s]
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 0.8166, 'grad_norm': 6.860880374908447, 'learning_rate': 4.854380242311277e-05, 'epoch': 0.03}
+{'loss': 0.6086, 'grad_norm': 6.8258771896362305, 'learning_rate': 4.708760484622554e-05, 'epoch': 0.06}
+{'loss': 0.5466, 'grad_norm': 7.501130104064941, 'learning_rate': 4.563140726933831e-05, 'epoch': 0.09}
+{'loss': 0.5378, 'grad_norm': 7.516374588012695, 'learning_rate': 4.4175209692451076e-05, 'epoch': 0.12}
+{'loss': 0.5083, 'grad_norm': 10.127071380615234, 'learning_rate': 4.271901211556384e-05, 'epoch': 0.15}
+{'loss': 0.4902, 'grad_norm': 5.411293983459473, 'learning_rate': 4.1262814538676606e-05, 'epoch': 0.17}
+{'loss': 0.4819, 'grad_norm': 6.93535041809082, 'learning_rate': 3.980661696178938e-05, 'epoch': 0.2}
+{'loss': 0.4654, 'grad_norm': 7.094301700592041, 'learning_rate': 3.835041938490215e-05, 'epoch': 0.23}
+{'loss': 0.4539, 'grad_norm': 7.359006881713867, 'learning_rate': 3.689422180801491e-05, 'epoch': 0.26}
+{'loss': 0.4545, 'grad_norm': 4.928803443908691, 'learning_rate': 3.543802423112768e-05, 'epoch': 0.29}
+{'loss': 0.4517, 'grad_norm': 4.657796859741211, 'learning_rate': 3.3981826654240454e-05, 'epoch': 0.32}
+{'loss': 0.4345, 'grad_norm': 5.39678955078125, 'learning_rate': 3.2525629077353216e-05, 'epoch': 0.35}
+{'loss': 0.4284, 'grad_norm': 4.425057411193848, 'learning_rate': 3.1069431500465984e-05, 'epoch': 0.38}
+{'loss': 0.4317, 'grad_norm': 8.276857376098633, 'learning_rate': 2.9613233923578752e-05, 'epoch': 0.41}
+{'loss': 0.4318, 'grad_norm': 4.0609869956970215, 'learning_rate': 2.8157036346691517e-05, 'epoch': 0.44}
+{'loss': 0.4217, 'grad_norm': 5.553059101104736, 'learning_rate': 2.670083876980429e-05, 'epoch': 0.47}
+{'loss': 0.4168, 'grad_norm': 6.536571502685547, 'learning_rate': 2.5244641192917057e-05, 'epoch': 0.5}
+{'loss': 0.4083, 'grad_norm': 6.260557651519775, 'learning_rate': 2.3788443616029822e-05, 'epoch': 0.52}
+{'loss': 0.4182, 'grad_norm': 9.233783721923828, 'learning_rate': 2.2332246039142594e-05, 'epoch': 0.55}
+{'loss': 0.4143, 'grad_norm': 5.375195026397705, 'learning_rate': 2.087604846225536e-05, 'epoch': 0.58}
+{'loss': 0.4031, 'grad_norm': 5.304502964019775, 'learning_rate': 1.9419850885368127e-05, 'epoch': 0.61}
+{'loss': 0.4046, 'grad_norm': 5.678232669830322, 'learning_rate': 1.7963653308480895e-05, 'epoch': 0.64}
+{'loss': 0.4046, 'grad_norm': 5.64345645904541, 'learning_rate': 1.6507455731593664e-05, 'epoch': 0.67}
+{'loss': 0.4003, 'grad_norm': 5.151171684265137, 'learning_rate': 1.5051258154706432e-05, 'epoch': 0.7}
+{'loss': 0.3996, 'grad_norm': 6.805277347564697, 'learning_rate': 1.3595060577819199e-05, 'epoch': 0.73}
+{'loss': 0.4016, 'grad_norm': 3.0628721714019775, 'learning_rate': 1.2138863000931967e-05, 'epoch': 0.76}
+{'loss': 0.3859, 'grad_norm': 6.783834934234619, 'learning_rate': 1.0682665424044735e-05, 'epoch': 0.79}
+{'loss': 0.38, 'grad_norm': 5.0106658935546875, 'learning_rate': 9.226467847157502e-06, 'epoch': 0.82}
+{'loss': 0.385, 'grad_norm': 6.658204555511475, 'learning_rate': 7.77027027027027e-06, 'epoch': 0.84}
+{'loss': 0.3903, 'grad_norm': 3.290886878967285, 'learning_rate': 6.314072693383039e-06, 'epoch': 0.87}
+{'loss': 0.3864, 'grad_norm': 5.832420349121094, 'learning_rate': 4.857875116495807e-06, 'epoch': 0.9}
+{'loss': 0.3845, 'grad_norm': 3.967571973800659, 'learning_rate': 3.401677539608574e-06, 'epoch': 0.93}
+{'loss': 0.3815, 'grad_norm': 5.018594741821289, 'learning_rate': 1.9454799627213424e-06, 'epoch': 0.96}
+{'loss': 0.3794, 'grad_norm': 8.083765983581543, 'learning_rate': 4.892823858341099e-07, 'epoch': 0.99}
+{'train_runtime': 2039.6666, 'train_samples_per_second': 269.342, 'train_steps_per_second': 8.417, 'train_loss': 0.44380294643377216, 'epoch': 1.0}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17168/17168 [33:59<00:00,  8.42it/s]
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 68671/68671 [16:10<00:00, 70.75it/s]
+PredictionOutput(predictions=array([[-2.2923887 ,  3.3002958 , -1.6725577 ],
+       [-2.910503  , -1.2180705 ,  4.593782  ],
+       [ 2.9072256 , -0.2317001 , -3.48953   ],
+       ...,
+       [-1.984556  ,  3.3090763 , -2.0543077 ],
+       [-3.456289  ,  0.19089697,  3.4444888 ],
+       [ 2.9258783 , -0.54803807, -3.0466266 ]], dtype=float32), label_ids=array([1, 2, 0, ..., 1, 2, 0], dtype=int64), metrics={'test_loss': 0.32369354367256165, 'test_accuracy': 0.8816565275192261, 'test_runtime': 970.6257, 'test_samples_per_second': 565.993, 'test_steps_per_second': 70.749})
+wrong_indices: [     8     11     15 ... 549347 549348 549362]
+len(wrong_indices): 65014
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+
+
+rename wrong_indices.txt to wrong_indices_epochs_1.txt so not overwritten by later wrong_indices.txt
+copy down learning rate
+final learning rate after 1.0 epochs 4.892823858341099e-07
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted.jsonl --model ./trained_model_epochs_1 --output_dir ./trained_model_epochs_2  --num_train_epochs 1.0 --learning_rate 4.892823858341099e-07
+
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted.jsonl --model ./trained_model_epochs_1 --output_dir ./trained_model_epochs_2  --num_train_epochs 1.0 --learning_rate 4.892823858341099e-07
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+Map (num_proc=2): 100%|█████████████████████████████████████████████████████████████████████████████████████| 549367/549367 [00:36<00:00, 15038.02 examples/s]
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 0.3525, 'grad_norm': 7.450297832489014, 'learning_rate': 4.7503254934080526e-07, 'epoch': 0.03}
+{'loss': 0.3393, 'grad_norm': 4.260455131530762, 'learning_rate': 4.6078271284750053e-07, 'epoch': 0.06}
+{'loss': 0.3162, 'grad_norm': 7.765392303466797, 'learning_rate': 4.4653287635419585e-07, 'epoch': 0.09}
+{'loss': 0.3147, 'grad_norm': 6.244809150695801, 'learning_rate': 4.3228303986089116e-07, 'epoch': 0.12}
+{'loss': 0.3028, 'grad_norm': 9.774665832519531, 'learning_rate': 4.1803320336758643e-07, 'epoch': 0.15}
+{'loss': 0.2951, 'grad_norm': 4.993813514709473, 'learning_rate': 4.037833668742818e-07, 'epoch': 0.17}
+{'loss': 0.2924, 'grad_norm': 4.779728889465332, 'learning_rate': 3.895335303809771e-07, 'epoch': 0.2}
+{'loss': 0.2826, 'grad_norm': 5.428706169128418, 'learning_rate': 3.7528369388767244e-07, 'epoch': 0.23}
+{'loss': 0.2707, 'grad_norm': 4.887404918670654, 'learning_rate': 3.610338573943677e-07, 'epoch': 0.26}
+{'loss': 0.2795, 'grad_norm': 4.682826995849609, 'learning_rate': 3.46784020901063e-07, 'epoch': 0.29}
+{'loss': 0.2829, 'grad_norm': 6.044409275054932, 'learning_rate': 3.3253418440775834e-07, 'epoch': 0.32}
+{'loss': 0.2654, 'grad_norm': 6.54197359085083, 'learning_rate': 3.182843479144536e-07, 'epoch': 0.35}
+{'loss': 0.2617, 'grad_norm': 2.8209779262542725, 'learning_rate': 3.040345114211489e-07, 'epoch': 0.38}
+{'loss': 0.271, 'grad_norm': 8.728093147277832, 'learning_rate': 2.8978467492784424e-07, 'epoch': 0.41}
+{'loss': 0.2774, 'grad_norm': 4.236044883728027, 'learning_rate': 2.755348384345395e-07, 'epoch': 0.44}
+{'loss': 0.2706, 'grad_norm': 10.40553092956543, 'learning_rate': 2.612850019412348e-07, 'epoch': 0.47}
+{'loss': 0.2652, 'grad_norm': 7.5492987632751465, 'learning_rate': 2.470351654479302e-07, 'epoch': 0.5}
+{'loss': 0.2658, 'grad_norm': 4.584534645080566, 'learning_rate': 2.3278532895462546e-07, 'epoch': 0.52}
+{'loss': 0.2777, 'grad_norm': 8.686141014099121, 'learning_rate': 2.1853549246132077e-07, 'epoch': 0.55}
+{'loss': 0.2771, 'grad_norm': 5.828962802886963, 'learning_rate': 2.042856559680161e-07, 'epoch': 0.58}
+{'loss': 0.2673, 'grad_norm': 4.212432384490967, 'learning_rate': 1.9003581947471138e-07, 'epoch': 0.61}
+{'loss': 0.2798, 'grad_norm': 5.137758731842041, 'learning_rate': 1.757859829814067e-07, 'epoch': 0.64}
+{'loss': 0.2848, 'grad_norm': 5.177323818206787, 'learning_rate': 1.61536146488102e-07, 'epoch': 0.67}
+{'loss': 0.2877, 'grad_norm': 5.313381195068359, 'learning_rate': 1.472863099947973e-07, 'epoch': 0.7}
+{'loss': 0.2922, 'grad_norm': 8.40533447265625, 'learning_rate': 1.330364735014926e-07, 'epoch': 0.73}
+{'loss': 0.3044, 'grad_norm': 4.04162073135376, 'learning_rate': 1.1878663700818792e-07, 'epoch': 0.76}
+{'loss': 0.2925, 'grad_norm': 7.991168022155762, 'learning_rate': 1.0453680051488324e-07, 'epoch': 0.79}
+{'loss': 0.2958, 'grad_norm': 5.4457783699035645, 'learning_rate': 9.028696402157853e-08, 'epoch': 0.82}
+{'loss': 0.3107, 'grad_norm': 8.034989356994629, 'learning_rate': 7.603712752827383e-08, 'epoch': 0.84}
+{'loss': 0.3283, 'grad_norm': 2.5120644569396973, 'learning_rate': 6.178729103496915e-08, 'epoch': 0.87}
+{'loss': 0.3393, 'grad_norm': 6.3398213386535645, 'learning_rate': 4.753745454166446e-08, 'epoch': 0.9}
+{'loss': 0.3526, 'grad_norm': 4.297635078430176, 'learning_rate': 3.328761804835976e-08, 'epoch': 0.93}
+{'loss': 0.3661, 'grad_norm': 6.732565402984619, 'learning_rate': 1.903778155505507e-08, 'epoch': 0.96}
+{'loss': 0.3827, 'grad_norm': 11.287766456604004, 'learning_rate': 4.787945061750377e-09, 'epoch': 0.99}
+{'train_runtime': 2032.4492, 'train_samples_per_second': 270.298, 'train_steps_per_second': 8.447, 'train_loss': 0.2993948350748167, 'epoch': 1.0}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17168/17168 [33:52<00:00,  8.45it/s]
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 68671/68671 [16:06<00:00, 71.02it/s]
+PredictionOutput(predictions=array([[-2.2305412 ,  3.4738178 , -2.004677  ],
+       [-2.840318  , -1.5651772 ,  4.9823823 ],
+       [ 3.1273358 , -0.28553587, -3.689514  ],
+       ...,
+       [-1.9571456 ,  3.449113  , -2.303036  ],
+       [-3.6630592 , -0.52142173,  4.5360045 ],
+       [ 3.118807  , -0.60187966, -3.2070355 ]], dtype=float32), label_ids=array([1, 2, 0, ..., 1, 2, 0], dtype=int64), metrics={'test_loss': 0.3404003381729126, 'test_accuracy': 0.8827923536300659, 'test_runtime': 966.8792, 'test_samples_per_second': 568.186, 'test_steps_per_second': 71.023})
+wrong_indices: [     8     11     15 ... 549347 549348 549362]
+len(wrong_indices): 64390
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+>>
+
+rename wrong_indices.txt to wrong_indices_epochs_2.txt so not overwritten by later wrong_indices.txt
+copy down learning rate
+final learning rate after 2.0 epochs 4.787945061750377e-09
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted.jsonl --model ./trained_model_epochs_2 --output_dir ./trained_model_epochs_3  --num_train_epochs 1.0 --learning_rate 4.787945061750377e-09
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted.jsonl --model ./trained_model_epochs_2 --output_dir ./trained_model_epochs_3  --num_train_epochs 1.0 --learning_rate 4.787945061750377e-09
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+Map (num_proc=2): 100%|█████████████████████████████████████████████████████████████████████████████████████| 549367/549367 [00:36<00:00, 14864.05 examples/s]
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 0.3553, 'grad_norm': 10.731819152832031, 'learning_rate': 4.648501181806576e-09, 'epoch': 0.03}
+{'loss': 0.3406, 'grad_norm': 5.91339635848999, 'learning_rate': 4.509057301862774e-09, 'epoch': 0.06}
+{'loss': 0.3134, 'grad_norm': 9.883996963500977, 'learning_rate': 4.3696134219189714e-09, 'epoch': 0.09}
+{'loss': 0.312, 'grad_norm': 7.698213577270508, 'learning_rate': 4.23016954197517e-09, 'epoch': 0.12}
+{'loss': 0.2974, 'grad_norm': 10.358633041381836, 'learning_rate': 4.090725662031368e-09, 'epoch': 0.15}
+{'loss': 0.2909, 'grad_norm': 5.156635284423828, 'learning_rate': 3.9512817820875666e-09, 'epoch': 0.17}
+{'loss': 0.2877, 'grad_norm': 5.384617805480957, 'learning_rate': 3.811837902143765e-09, 'epoch': 0.2}
+{'loss': 0.2769, 'grad_norm': 5.237165927886963, 'learning_rate': 3.6723940221999634e-09, 'epoch': 0.23}
+{'loss': 0.2632, 'grad_norm': 4.657285690307617, 'learning_rate': 3.5329501422561613e-09, 'epoch': 0.26}
+{'loss': 0.2734, 'grad_norm': 4.790233135223389, 'learning_rate': 3.3935062623123595e-09, 'epoch': 0.29}
+{'loss': 0.2768, 'grad_norm': 6.39202356338501, 'learning_rate': 3.254062382368558e-09, 'epoch': 0.32}
+{'loss': 0.2594, 'grad_norm': 6.913276672363281, 'learning_rate': 3.114618502424756e-09, 'epoch': 0.35}
+{'loss': 0.2558, 'grad_norm': 2.5550785064697266, 'learning_rate': 2.9751746224809542e-09, 'epoch': 0.38}
+{'loss': 0.2654, 'grad_norm': 8.676122665405273, 'learning_rate': 2.835730742537153e-09, 'epoch': 0.41}
+{'loss': 0.2724, 'grad_norm': 3.893798828125, 'learning_rate': 2.6962868625933507e-09, 'epoch': 0.44}
+{'loss': 0.2653, 'grad_norm': 10.033635139465332, 'learning_rate': 2.556842982649549e-09, 'epoch': 0.47}
+{'loss': 0.2611, 'grad_norm': 7.302475929260254, 'learning_rate': 2.417399102705747e-09, 'epoch': 0.5}
+{'loss': 0.2613, 'grad_norm': 4.344480037689209, 'learning_rate': 2.2779552227619454e-09, 'epoch': 0.52}
+{'loss': 0.2731, 'grad_norm': 8.326175689697266, 'learning_rate': 2.138511342818144e-09, 'epoch': 0.55}
+{'loss': 0.2725, 'grad_norm': 5.627583026885986, 'learning_rate': 1.999067462874342e-09, 'epoch': 0.58}
+{'loss': 0.2637, 'grad_norm': 4.216118335723877, 'learning_rate': 1.85962358293054e-09, 'epoch': 0.61}
+{'loss': 0.276, 'grad_norm': 4.889947891235352, 'learning_rate': 1.7201797029867385e-09, 'epoch': 0.64}
+{'loss': 0.2817, 'grad_norm': 4.955214500427246, 'learning_rate': 1.5807358230429368e-09, 'epoch': 0.67}
+{'loss': 0.2845, 'grad_norm': 5.014181137084961, 'learning_rate': 1.441291943099135e-09, 'epoch': 0.7}
+{'loss': 0.2892, 'grad_norm': 8.178665161132812, 'learning_rate': 1.3018480631553332e-09, 'epoch': 0.73}
+{'loss': 0.3014, 'grad_norm': 3.8958303928375244, 'learning_rate': 1.1624041832115315e-09, 'epoch': 0.76}
+{'loss': 0.2904, 'grad_norm': 7.792786121368408, 'learning_rate': 1.0229603032677297e-09, 'epoch': 0.79}
+{'loss': 0.2938, 'grad_norm': 5.329207897186279, 'learning_rate': 8.835164233239279e-10, 'epoch': 0.82}
+{'loss': 0.3088, 'grad_norm': 7.807357311248779, 'learning_rate': 7.440725433801262e-10, 'epoch': 0.84}
+{'loss': 0.3267, 'grad_norm': 2.5016157627105713, 'learning_rate': 6.046286634363244e-10, 'epoch': 0.87}
+{'loss': 0.3378, 'grad_norm': 6.230152130126953, 'learning_rate': 4.651847834925227e-10, 'epoch': 0.9}
+{'loss': 0.3515, 'grad_norm': 4.276706695556641, 'learning_rate': 3.2574090354872087e-10, 'epoch': 0.93}
+{'loss': 0.3654, 'grad_norm': 6.709715843200684, 'learning_rate': 1.8629702360491916e-10, 'epoch': 0.96}
+{'loss': 0.3824, 'grad_norm': 11.279077529907227, 'learning_rate': 4.6853143661117394e-11, 'epoch': 0.99}
+{'train_runtime': 2033.7096, 'train_samples_per_second': 270.131, 'train_steps_per_second': 8.442, 'train_loss': 0.2959769978661017, 'epoch': 1.0}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17168/17168 [33:53<00:00,  8.44it/s]
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 68671/68671 [15:26<00:00, 74.08it/s]
+PredictionOutput(predictions=array([[-2.2323515 ,  3.473964  , -2.0026457 ],
+       [-2.840131  , -1.5652827 ,  4.982324  ],
+       [ 3.1262453 , -0.2845682 , -3.689607  ],
+       ...,
+       [-1.9591489 ,  3.4494102 , -2.300913  ],
+       [-3.662045  , -0.52368194,  4.5376873 ],
+       [ 3.1182287 , -0.6011494 , -3.2074225 ]], dtype=float32), label_ids=array([1, 2, 0, ..., 1, 2, 0], dtype=int64), metrics={'test_loss': 0.3403591513633728, 'test_accuracy': 0.8827959895133972, 'test_runtime': 926.9733, 'test_samples_per_second': 592.646, 'test_steps_per_second': 74.081})
+wrong_indices: [     8     11     15 ... 549347 549348 549362]
+len(wrong_indices): 64388
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+>>
+
+
+rename wrong_indices.txt to wrong_indices_epochs_3.txt so not overwritten by later wrong_indices.txt
+copy down learning rate
+final learning rate after 3.0 epochs 4.6853143661117394e-11
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3/ --output_dir  ./eval_trained_model_epochs_3/
+
+{"eval_loss": 0.2677115797996521, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.9122421741485596, "eval_runtime": 15.4327, "eval_samples_per_second": 530.887, "eval_steps_per_second": 66.418}
+
+
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\pythonProject\.venv\Scripts\python.exe "C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\wrong indexes intersect.py" 
+len(numbers_set_1): 65014
+len(numbers_set_2): 64390
+len(numbers_set_3): 64388
+len(numbers_set_1_or_2): 67989
+len(numbers_set_1_or_3): 67987
+len(numbers_set_2_or_3): 64433
+len(numbers_set_1_or_2_or_3): 68009
+len(numbers_set_1_and_2): 61415
+len(numbers_set_1_and_3): 61415
+len(numbers_set_2_and_3): 64345
+len(numbers_set_1_and_2_and_3): 61392
+
+Process finished with exit code 0
+
+
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1  --num_train_epochs 1.0 --learning_rate 1.0e-5
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1  --num_train_epochs 1.0 --learning_rate 1.0e-5
+>>
+Generating train split: 61392 examples [00:00, 925052.58 examples/s]
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+Map (num_proc=2): 100%|████████████████████████████████████████████████████████████████████████████████████████| 61392/61392 [00:09<00:00, 6294.46 examples/s]
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 1.1012, 'grad_norm': 3.2736103534698486, 'learning_rate': 7.394476289734237e-06, 'epoch': 0.26}
+{'loss': 0.9814, 'grad_norm': 2.5364627838134766, 'learning_rate': 4.788952579468474e-06, 'epoch': 0.52}
+{'loss': 0.9427, 'grad_norm': 4.377895355224609, 'learning_rate': 2.18342886920271e-06, 'epoch': 0.78}
+{'train_runtime': 224.5338, 'train_samples_per_second': 273.42, 'train_steps_per_second': 8.547, 'train_loss': 0.9885588661340949, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:44<00:00,  8.55it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:49<00:00, 70.03it/s]
+PredictionOutput(predictions=array([[ 0.3519284 ,  0.6941428 , -1.4568648 ],
+       [-0.86008006,  1.7381521 , -1.3760736 ],
+       [-1.3892083 ,  0.5334201 ,  0.8234825 ],
+       ...,
+       [-0.3396011 ,  0.02859349,  0.30714652],
+       [ 0.2491225 , -0.07193522, -0.17244741],
+       [-0.68749493,  0.12934375,  0.53149605]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 0.8742545247077942, 'test_accuracy': 0.5689666271209717, 'test_runtime': 109.6032, 'test_samples_per_second': 560.129, 'test_steps_per_second': 70.016})
+wrong_indices: [    2    10    18 ... 61386 61389 61390]
+len(wrong_indices): 26462
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-5/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_1e-5/
+
+{"eval_loss": 1.0194708108901978, "eval_model_preparation_time": 0.001, "eval_accuracy": 0.6807030439376831, "eval_runtime": 14.8021, "eval_samples_per_second": 553.501, "eval_steps_per_second": 69.247}
+
+# 0.681 lower than 0.912
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-6  --num_train_epochs 1.0 --learning_rate 1.0e-6
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-6  --num_train_epochs 1.0 --learning_rate 1.0e-6
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 1.6791, 'grad_norm': 8.499557495117188, 'learning_rate': 7.394476289734236e-07, 'epoch': 0.26}
+{'loss': 1.2027, 'grad_norm': 3.7739529609680176, 'learning_rate': 4.788952579468473e-07, 'epoch': 0.52}
+{'loss': 1.1001, 'grad_norm': 2.889625072479248, 'learning_rate': 2.1834288692027098e-07, 'epoch': 0.78}
+{'train_runtime': 224.6582, 'train_samples_per_second': 273.269, 'train_steps_per_second': 8.542, 'train_loss': 1.2736049570597479, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:44<00:00,  8.54it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:49<00:00, 69.94it/s]
+PredictionOutput(predictions=array([[ 0.5095625 ,  0.6443246 , -1.5898483 ],
+       [ 0.47257057,  0.28659624, -1.0297774 ],
+       [-1.0317627 ,  0.45531845,  0.6028515 ],
+       ...,
+       [-0.34969798,  0.21880424,  0.1219541 ],
+       [-0.26774088,  0.2768676 , -0.04693227],
+       [-0.81694835,  0.6032189 ,  0.2022402 ]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.0934199094772339, 'test_accuracy': 0.2964392900466919, 'test_runtime': 109.7395, 'test_samples_per_second': 559.434, 'test_steps_per_second': 69.929})
+wrong_indices: [    1     2     3 ... 61388 61390 61391]
+len(wrong_indices): 43193
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-6/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_1e-6/
+
+{"eval_loss": 0.6807562708854675, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.7832295894622803, "eval_runtime": 15.139, "eval_samples_per_second": 541.185, "eval_steps_per_second": 67.706}
+
+# 0.783 lower than 0.912
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-7  --num_train_epochs 1.0 --learning_rate 1.0e-7
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-7  --num_train_epochs 1.0 --learning_rate 1.0e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 2.1105, 'grad_norm': 18.00803565979004, 'learning_rate': 7.394476289734236e-08, 'epoch': 0.26}
+{'loss': 2.0254, 'grad_norm': 19.570356369018555, 'learning_rate': 4.7889525794684734e-08, 'epoch': 0.52}
+{'loss': 1.9712, 'grad_norm': 16.204498291015625, 'learning_rate': 2.1834288692027097e-08, 'epoch': 0.78}
+{'train_runtime': 225.1209, 'train_samples_per_second': 272.707, 'train_steps_per_second': 8.524, 'train_loss': 2.016045757729042, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:45<00:00,  8.52it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:50<00:00, 69.37it/s]
+PredictionOutput(predictions=array([[ 1.766671  ,  0.9773534 , -3.731798  ],
+       [ 3.1968157 , -0.70531875, -3.1962707 ],
+       [-2.6060762 ,  0.58477527,  2.102578  ],
+       ...,
+       [-1.6022907 ,  0.28914875,  1.3881186 ],
+       [-0.10478242,  0.33330277, -0.31613606],
+       [-2.7542868 ,  2.4557323 , -0.00405817]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 2.2059803009033203, 'test_accuracy': 0.01602814719080925, 'test_runtime': 110.6426, 'test_samples_per_second': 554.868, 'test_steps_per_second': 69.358})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 60408
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_1e-7/
+
+{"eval_loss": 0.2523152828216553, "eval_model_preparation_time": 0.0019, "eval_accuracy": 0.9140729904174805, "eval_runtime": 15.0795, "eval_samples_per_second": 543.322, "eval_steps_per_second": 67.973}
+
+# 0.914 > 0.912 by teensy bit
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-8  --num_train_epochs 1.0 --learning_rate 1.0e-8
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-8  --num_train_epochs 1.0 --learning_rate 1.0e-8
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 2.1612, 'grad_norm': 19.050189971923828, 'learning_rate': 7.3944762897342365e-09, 'epoch': 0.26}
+{'loss': 2.1587, 'grad_norm': 22.954833984375, 'learning_rate': 4.788952579468474e-09, 'epoch': 0.52}
+{'loss': 2.1567, 'grad_norm': 18.926671981811523, 'learning_rate': 2.18342886920271e-09, 'epoch': 0.78}
+{'train_runtime': 224.2296, 'train_samples_per_second': 273.791, 'train_steps_per_second': 8.558, 'train_loss': 2.157698495615392, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:44<00:00,  8.56it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:49<00:00, 70.22it/s]
+PredictionOutput(predictions=array([[ 1.9262695 ,  0.96325964, -3.9078012 ],
+       [ 3.4020164 , -0.8284347 , -3.2719095 ],
+       [-2.8553674 ,  0.5567878 ,  2.388771  ],
+       ...,
+       [-1.9053689 ,  0.35692176,  1.632997  ],
+       [-0.0516188 ,  0.32168162, -0.36505213],
+       [-2.8943577 ,  2.7156885 , -0.18214795]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 2.4588096141815186, 'test_accuracy': 0.0010099036153405905, 'test_runtime': 109.2992, 'test_samples_per_second': 561.688, 'test_steps_per_second': 70.211})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 61330
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_1e-8/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_1e-8/
+
+{"eval_loss": 0.26619553565979004, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.9121201038360596, "eval_runtime": 14.9688, "eval_samples_per_second": 547.339, "eval_steps_per_second": 68.476}
+
+# 0.912 = 0.912 by teensy bit
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_2e-7  --num_train_epochs 1.0 --learning_rate 2.0e-7
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_2e-7  --num_train_epochs 1.0 --learning_rate 2.0e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 2.0554, 'grad_norm': 16.837413787841797, 'learning_rate': 1.4788952579468473e-07, 'epoch': 0.26}
+{'loss': 1.8847, 'grad_norm': 16.30973243713379, 'learning_rate': 9.577905158936947e-08, 'epoch': 0.52}
+{'loss': 1.7813, 'grad_norm': 13.274993896484375, 'learning_rate': 4.3668577384054194e-08, 'epoch': 0.78}
+{'train_runtime': 225.0366, 'train_samples_per_second': 272.809, 'train_steps_per_second': 8.527, 'train_loss': 1.8697494816941604, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:45<00:00,  8.53it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:38<00:00, 78.17it/s]
+PredictionOutput(predictions=array([[ 1.5805918 ,  0.9753715 , -3.4954646 ],
+       [ 2.862137  , -0.55791926, -2.988421  ],
+       [-2.343278  ,  0.5849947 ,  1.832324  ],
+       ...,
+       [-1.2828714 ,  0.21383521,  1.1324661 ],
+       [-0.16282846,  0.3249001 , -0.23665674],
+       [-2.5395362 ,  2.130585  ,  0.17366777]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.9480726718902588, 'test_accuracy': 0.03782251849770546, 'test_runtime': 98.1854, 'test_samples_per_second': 625.266, 'test_steps_per_second': 78.158})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 59070
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+>>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_2e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_2e-7/
+
+{"eval_loss": 0.24373553693294525, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.9155376553535461, "eval_runtime": 12.8868, "eval_samples_per_second": 635.769, "eval_steps_per_second": 79.539}
+
+# 0.916 > 0.912 by teeny bit
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_5e-7  --num_train_epochs 1.0 --learning_rate 5.0e-7
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_5e-7  --num_train_epochs 1.0 --learning_rate 5.0e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 1.8986, 'grad_norm': 13.387810707092285, 'learning_rate': 3.697238144867118e-07, 'epoch': 0.26}
+{'loss': 1.5288, 'grad_norm': 9.15696907043457, 'learning_rate': 2.3944762897342367e-07, 'epoch': 0.52}
+{'loss': 1.3554, 'grad_norm': 6.610751628875732, 'learning_rate': 1.0917144346013549e-07, 'epoch': 0.78}
+{'train_runtime': 224.129, 'train_samples_per_second': 273.914, 'train_steps_per_second': 8.562, 'train_loss': 1.5289722977360443, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:44<00:00,  8.56it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:50<00:00, 69.25it/s]
+PredictionOutput(predictions=array([[ 1.0356967 ,  0.85857606, -2.61688   ],
+       [ 1.59348   , -0.13662824, -1.943475  ],
+       [-1.6568912 ,  0.5303754 ,  1.1769911 ],
+       ...,
+       [-0.61613345,  0.11442477,  0.5261013 ],
+       [-0.26245606,  0.27604544, -0.05926396],
+       [-1.6915244 ,  1.2448338 ,  0.36659098]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.3873237371444702, 'test_accuracy': 0.12017852813005447, 'test_runtime': 110.8309, 'test_samples_per_second': 553.925, 'test_steps_per_second': 69.241})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 54014
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+>>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_5e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_5e-7/
+
+{"eval_loss": 0.2913629710674286, "eval_model_preparation_time": 0.003, "eval_accuracy": 0.9074819684028625, "eval_runtime": 14.8397, "eval_samples_per_second": 552.101, "eval_steps_per_second": 69.072}
+
+# 0.907 < 0.912
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_3e-7  --num_train_epochs 1.0 --learning_rate 3.0e-7
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_3e-7  --num_train_epochs 1.0 --learning_rate 3.0e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 2.0015, 'grad_norm': 15.667804718017578, 'learning_rate': 2.218342886920271e-07, 'epoch': 0.26}
+{'loss': 1.7537, 'grad_norm': 13.524805068969727, 'learning_rate': 1.436685773840542e-07, 'epoch': 0.52}
+{'loss': 1.6129, 'grad_norm': 10.591832160949707, 'learning_rate': 6.55028660760813e-08, 'epoch': 0.78}
+{'train_runtime': 224.6777, 'train_samples_per_second': 273.245, 'train_steps_per_second': 8.541, 'train_loss': 1.7381211718648222, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:44<00:00,  8.54it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:50<00:00, 69.44it/s]
+PredictionOutput(predictions=array([[ 1.3933737 ,  0.95262   , -3.2227964 ],
+       [ 2.4431098 , -0.40822625, -2.6677246 ],
+       [-2.0957983 ,  0.5704544 ,  1.5920848 ],
+       ...,
+       [-1.0026113 ,  0.15451227,  0.898493  ],
+       [-0.21027525,  0.30731064, -0.15898484],
+       [-2.2729666 ,  1.8002753 ,  0.30033934]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.7217332124710083, 'test_accuracy': 0.06308639794588089, 'test_runtime': 110.5305, 'test_samples_per_second': 555.43, 'test_steps_per_second': 69.429})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 57519
+type(wrong_indices): <class 'numpy.ndarray'>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_3e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_3e-7/
+
+{"eval_loss": 0.24544696509838104, "eval_model_preparation_time": 0.003, "eval_accuracy": 0.9161479473114014, "eval_runtime": 14.897, "eval_samples_per_second": 549.977, "eval_steps_per_second": 68.806}
+
+# 0.916 > 0.912
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_4e-7  --num_train_epochs 1.0 --learning_rate 4.0e-7
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_4e-7  --num_train_epochs 1.0 --learning_rate 4.0e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 1.9492, 'grad_norm': 14.513969421386719, 'learning_rate': 2.9577905158936946e-07, 'epoch': 0.26}
+{'loss': 1.6345, 'grad_norm': 11.152149200439453, 'learning_rate': 1.9155810317873894e-07, 'epoch': 0.52}
+{'loss': 1.4703, 'grad_norm': 8.348661422729492, 'learning_rate': 8.733715476810839e-08, 'epoch': 0.78}
+{'train_runtime': 224.67, 'train_samples_per_second': 273.254, 'train_steps_per_second': 8.541, 'train_loss': 1.6241338033114578, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:44<00:00,  8.54it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:49<00:00, 70.01it/s]
+PredictionOutput(predictions=array([[ 1.2096126 ,  0.9116546 , -2.9239945 ],
+       [ 2.0072262 , -0.2662399 , -2.3034804 ],
+       [-1.8658074 ,  0.55074775,  1.3737707 ],
+       ...,
+       [-0.7790598 ,  0.12122183,  0.6947256 ],
+       [-0.24323222,  0.28941318, -0.09837583],
+       [-1.9808674 ,  1.4993743 ,  0.36158866]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.5339869260787964, 'test_accuracy': 0.09048410505056381, 'test_runtime': 109.626, 'test_samples_per_second': 560.013, 'test_steps_per_second': 70.002})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 55837
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+>>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_4e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_4e-7/
+
+{"eval_loss": 0.26035276055336, "eval_model_preparation_time": 0.003, "eval_accuracy": 0.9135847687721252, "eval_runtime": 14.7934, "eval_samples_per_second": 553.83, "eval_steps_per_second": 69.288}
+
+# 0.9136 > 0.912
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_25e-7  --num_train_epochs 1.0 --learning_rate 2.5e-7
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_25e-7  --num_train_epochs 1.0 --learning_rate 2.5e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 2.0282, 'grad_norm': 16.251361846923828, 'learning_rate': 1.848619072433559e-07, 'epoch': 0.26}
+{'loss': 1.8178, 'grad_norm': 14.862813949584961, 'learning_rate': 1.1972381448671184e-07, 'epoch': 0.52}
+{'loss': 1.6941, 'grad_norm': 11.888639450073242, 'learning_rate': 5.4585721730067746e-08, 'epoch': 0.78}
+{'train_runtime': 224.542, 'train_samples_per_second': 273.41, 'train_steps_per_second': 8.546, 'train_loss': 1.8018686235913888, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:44<00:00,  8.55it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:52<00:00, 68.32it/s]
+PredictionOutput(predictions=array([[ 1.4867839 ,  0.96651936, -3.3631072 ],
+       [ 2.6589797 , -0.4826378 , -2.8382149 ],
+       [-2.2174928 ,  0.5788005 ,  1.7091722 ],
+       ...,
+       [-1.1364096 ,  0.18132313,  1.012145  ],
+       [-0.18824902,  0.31660062, -0.1963508 ],
+       [-2.4112453 ,  1.9635597 ,  0.24489152]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.8304154872894287, 'test_accuracy': 0.05012053623795509, 'test_runtime': 112.3428, 'test_samples_per_second': 546.47, 'test_steps_per_second': 68.309})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 58315
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_25e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_25e-7/
+
+{"eval_loss": 0.24311968684196472, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.9165140986442566, "eval_runtime": 14.5652, "eval_samples_per_second": 562.505, "eval_steps_per_second": 70.373}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_23e-7  --num_train_epochs 1.0 --learning_rate 2.3e-7
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_23e-7  --num_train_epochs 1.0 --learning_rate 2.3e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 2.039, 'grad_norm': 16.485614776611328, 'learning_rate': 1.7007295466388744e-07, 'epoch': 0.26}
+{'loss': 1.8443, 'grad_norm': 15.42807388305664, 'learning_rate': 1.1014590932777488e-07, 'epoch': 0.52}
+{'loss': 1.7283, 'grad_norm': 12.43398380279541, 'learning_rate': 5.021886399166233e-08, 'epoch': 0.78}
+{'train_runtime': 224.8162, 'train_samples_per_second': 273.076, 'train_steps_per_second': 8.536, 'train_loss': 1.8285502105283513, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:44<00:00,  8.54it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:48<00:00, 70.45it/s]
+PredictionOutput(predictions=array([[ 1.5242914 ,  0.9706798 , -3.4170716 ],
+       [ 2.7423372 , -0.5127263 , -2.9013145 ],
+       [-2.2673335 ,  0.58161056,  1.7576425 ],
+       ...,
+       [-1.1936145 ,  0.19371785,  1.0595468 ],
+       [-0.17845999,  0.3201001 , -0.21222623],
+       [-2.463964  ,  2.0301828 ,  0.21819115]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.8764567375183105, 'test_accuracy': 0.04541308432817459, 'test_runtime': 108.9494, 'test_samples_per_second': 563.491, 'test_steps_per_second': 70.436})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 58604
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_23e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_23e-7/
+
+{"eval_loss": 0.24303339421749115, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.9161479473114014, "eval_runtime": 15.1039, "eval_samples_per_second": 542.444, "eval_steps_per_second": 67.863}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_27e-7  --num_train_epochs 1.0 --learning_rate 2.7e-7
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_27e-7  --num_train_epochs 1.0 --learning_rate 2.7e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 2.0175, 'grad_norm': 16.01755714416504, 'learning_rate': 1.9965085982282439e-07, 'epoch': 0.26}
+{'loss': 1.7918, 'grad_norm': 14.314981460571289, 'learning_rate': 1.293017196456488e-07, 'epoch': 0.52}
+{'loss': 1.6608, 'grad_norm': 11.357769966125488, 'learning_rate': 5.895257946847317e-08, 'epoch': 0.78}
+{'train_runtime': 225.6626, 'train_samples_per_second': 272.052, 'train_steps_per_second': 8.504, 'train_loss': 1.7758554654422063, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:45<00:00,  8.50it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:45<00:00, 73.08it/s]
+PredictionOutput(predictions=array([[ 1.4493511 ,  0.9615453 , -3.3078759 ],
+       [ 2.5735974 , -0.45269692, -2.7718625 ],
+       [-2.1683109 ,  0.5756646 ,  1.6616545 ],
+       ...,
+       [-1.0812552 ,  0.1698439 ,  0.96583104],
+       [-0.19749278,  0.31294197, -0.18094847],
+       [-2.3569343 ,  1.8975562 ,  0.2690463 ]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.7858197689056396, 'test_accuracy': 0.05549582839012146, 'test_runtime': 105.0385, 'test_samples_per_second': 584.472, 'test_steps_per_second': 73.059})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 57985
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+>>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_27e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_27e-7/
+
+
+{"eval_loss": 0.24367743730545044, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.9168802499771118, "eval_runtime": 14.7503, "eval_samples_per_second": 555.446, "eval_steps_per_second": 69.49}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_28e-7  --num_train_epochs 1.0 --learning_rate 2.8e-7
+
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_28e-7  --num_train_epochs 1.0 --learning_rate 2.8e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 2.0121, 'grad_norm': 15.900811195373535, 'learning_rate': 2.0704533611255862e-07, 'epoch': 0.26}
+{'loss': 1.779, 'grad_norm': 14.047395706176758, 'learning_rate': 1.3409067222511728e-07, 'epoch': 0.52}
+{'loss': 1.6446, 'grad_norm': 11.098196029663086, 'learning_rate': 6.113600833767588e-08, 'epoch': 0.78}
+{'train_runtime': 225.4289, 'train_samples_per_second': 272.334, 'train_steps_per_second': 8.513, 'train_loss': 1.7631009625170988, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:45<00:00,  8.51it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:50<00:00, 69.53it/s]
+PredictionOutput(predictions=array([[ 1.4306672 ,  0.9587586 , -3.2798007 ],
+       [ 2.5303383 , -0.4378042 , -2.737672  ],
+       [-2.143967  ,  0.5739862 ,  1.638242  ],
+       ...,
+       [-1.0544832 ,  0.16447784,  0.94309014],
+       [-0.20190275,  0.31107748, -0.17346206],
+       [-2.3292453 ,  1.8648622 ,  0.28014645]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.7640745639801025, 'test_accuracy': 0.05775997042655945, 'test_runtime': 110.396, 'test_samples_per_second': 556.107, 'test_steps_per_second': 69.513})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 57846
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_28e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_28e-7/
+
+{"eval_loss": 0.24414019286632538, "eval_model_preparation_time": 0.002, "eval_accuracy": 0.9167581796646118, "eval_runtime": 14.9592, "eval_samples_per_second": 547.688, "eval_steps_per_second": 68.52}
+
+python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_26e-7  --num_train_epochs 1.0 --learning_rate 2.6e-7
+
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2> python run.py --do_train --per_device_train_batch_size 32 --task nli --dataset ./snli_1.0_train_formatted_wrong_examples.jsonl --model ./trained_model_epochs_3 --output_dir ./trained_model_epochs_3_wrongex_epoch_1_lr_26e-7  --num_train_epochs 1.0 --learning_rate 2.6e-7
+>>
+Preprocessing data... (this takes a little bit, should only happen once per dataset)
+C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2\run.py:171: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = trainer_class(
+{'loss': 2.0229, 'grad_norm': 16.134389877319336, 'learning_rate': 1.9225638353309015e-07, 'epoch': 0.26}
+{'loss': 1.8048, 'grad_norm': 14.586767196655273, 'learning_rate': 1.245127670661803e-07, 'epoch': 0.52}
+{'loss': 1.6773, 'grad_norm': 11.621295928955078, 'learning_rate': 5.6769150599270455e-08, 'epoch': 0.78}
+{'train_runtime': 225.2676, 'train_samples_per_second': 272.529, 'train_steps_per_second': 8.519, 'train_loss': 1.7887777434841552, 'epoch': 1.0}
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1919/1919 [03:45<00:00,  8.52it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7674/7674 [01:49<00:00, 70.06it/s]
+PredictionOutput(predictions=array([[ 1.4680542 ,  0.9641324 , -3.3356438 ],
+       [ 2.6165023 , -0.4676434 , -2.8054056 ],
+       [-2.192821  ,  0.5772609 ,  1.685309  ],
+       ...,
+       [-1.108568  ,  0.17546119,  0.98885185],
+       [-0.19293417,  0.31478143, -0.18858416],
+       [-2.3842776 ,  1.9304564 ,  0.25730377]], dtype=float32), label_ids=array([1, 1, 1, ..., 1, 2, 2], dtype=int64), metrics={'test_loss': 1.8079339265823364, 'test_accuracy': 0.052661582827568054, 'test_runtime': 109.5565, 'test_samples_per_second': 560.368, 'test_steps_per_second': 70.046})
+wrong_indices: [    0     1     2 ... 61389 61390 61391]
+len(wrong_indices): 58159
+type(wrong_indices): <class 'numpy.ndarray'>
+type(train_dataset): <class 'datasets.arrow_dataset.Dataset'>
+PS C:\Users\kenta\Desktop\NLP\fp-dataset-artifcats-main_2>
+>>
+
+python run.py --do_eval --per_device_train_batch_size 32 --task nli --dataset ./breaking_nli_modified.jsonl --model ./trained_model_epochs_3_wrongex_epoch_1_lr_26e-7/ --output_dir  ./eval_trained_model_epochs_3_wrongex_epoch_1_lr_26e-7/
+
+{"eval_loss": 0.2433384209871292, "eval_model_preparation_time": 0.003, "eval_accuracy": 0.9166361689567566, "eval_runtime": 15.0144, "eval_samples_per_second": 545.676, "eval_steps_per_second": 68.268}
+
+
